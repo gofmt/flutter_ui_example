@@ -1,5 +1,25 @@
 # goffi
 Project Root (goffi)
+## 手动加载
+- 手动加载 .so(debug模式)
+```bash
+cd ~/nfs_share/flutter/jqh_native/build/app/intermediates/merged_native_libs/debug/out/lib 
+cp ~/libs/x86_64/libgo.so x86_64/
+cp ~/libs/x86/libgo.so x86/
+cp ~/libs/arm64-v8a/libgo.so arm64-v8a/
+cp ~/libs/armeabi-v7a/libgo.so armeabi-v7a/
+```
+
+- 手动加载 .so(release模式)
+```bash
+cd ~/nfs_share/flutter/jqh_native/build/app/intermediates/merged_native_libs/release/out/lib 
+cp ~/libs/x86_64/libgo.so x86_64/
+cp ~/libs/x86/libgo.so x86/
+cp ~/libs/arm64-v8a/libgo.so arm64-v8a/
+cp ~/libs/armeabi-v7a/libgo.so armeabi-v7a/
+```
+
+---
 
 ## andriod_ffi_config_files
 
