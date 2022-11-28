@@ -79,8 +79,9 @@ typedef struct { void *data; GoInt len; GoInt cap; } GoSlice;
 extern "C" {
 #endif
 
-extern char* getdate(GoString times, GoInt star, GoInt door);
-extern GoInt add(GoInt a, GoInt b);
+extern char* DartGoType(char* str);
+extern char* GetDate(char* times, GoInt star, GoInt door);
+extern GoInt add(GoInt a, GoInt b, GoInt c);
 extern char* gets();
 
 #ifdef __cplusplus

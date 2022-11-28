@@ -1,10 +1,10 @@
 package main
 
-//import "github.com/Aquarian-Age/sjqm/v3"
 import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"time"
 	"unsafe"
 )
@@ -19,9 +19,26 @@ const layout = "2006-01-02 15:04:05"
 func main() {
 }
 
-//export getdate
-func getdate(times string, star, door int) *C.char {
-	tx, err := time.Parse(layout, times)
+//export DartGoType
+func DartGoType(str *C.char) *C.char {
+
+	file, err := os.Create("./golib/message.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	if _, err := file.WriteString(fmt.Sprint(C.GoString(str))); err != nil {
+		panic(err)
+	}
+	//
+	gostr := "form dartDate:" + C.GoString(str)
+	defer C.free(unsafe.Pointer(C.CString(gostr)))
+	return C.CString(gostr)
+}
+
+//export GetDate
+func GetDate(times *C.char, star, door int) *C.char {
+	tx, err := time.Parse(layout, C.GoString(times))
 	if err != nil {
 		log.Println(err)
 	}
@@ -32,8 +49,8 @@ func getdate(times string, star, door int) *C.char {
 }
 
 //export add
-func add(a, b int) int {
-	return a + b
+func add(a, b, c int) int {
+	return a + b + c
 }
 
 //export gets

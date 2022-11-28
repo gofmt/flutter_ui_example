@@ -19,7 +19,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 /* Start of preamble from import "C" comments.  */
 
 
-#line 11 "main.go"
+#line 12 "main.go"
  #include <stdio.h>
  #include <stdlib.h>
 
@@ -79,7 +79,9 @@ typedef struct { void *data; GoInt len; GoInt cap; } GoSlice;
 extern "C" {
 #endif
 
-extern GoInt add(GoInt a, GoInt b);
+extern char* DartGoType(char* str);
+extern char* GetDate(char* times, GoInt star, GoInt door);
+extern GoInt add(GoInt a, GoInt b, GoInt c);
 extern char* gets();
 
 #ifdef __cplusplus

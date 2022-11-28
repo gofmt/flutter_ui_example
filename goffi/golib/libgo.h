@@ -43,8 +43,8 @@ typedef int GoInt32;
 typedef unsigned int GoUint32;
 typedef long long GoInt64;
 typedef unsigned long long GoUint64;
-typedef GoInt32 GoInt;
-typedef GoUint32 GoUint;
+typedef GoInt64 GoInt;
+typedef GoUint64 GoUint;
 typedef size_t GoUintptr;
 typedef float GoFloat32;
 typedef double GoFloat64;
@@ -61,7 +61,7 @@ typedef double _Complex GoComplex128;
   static assertion to make sure the file is being used on architecture
   at least with matching size of GoInt.
 */
-typedef char _check_for_32_bit_pointer_matching_GoInt[sizeof(void*)==32/8 ? 1:-1];
+typedef char _check_for_64_bit_pointer_matching_GoInt[sizeof(void*)==64/8 ? 1:-1];
 
 #ifndef GO_CGO_GOSTRING_TYPEDEF
 typedef _GoString_ GoString;
@@ -79,8 +79,9 @@ typedef struct { void *data; GoInt len; GoInt cap; } GoSlice;
 extern "C" {
 #endif
 
-extern char* getdate(GoString times, GoInt star, GoInt door);
-extern GoInt add(GoInt a, GoInt b);
+extern char* DartGoType(char* str);
+extern char* GetDate(GoString times, GoInt star, GoInt door);
+extern GoInt add(GoInt a, GoInt b, GoInt c);
 extern char* gets();
 
 #ifdef __cplusplus
