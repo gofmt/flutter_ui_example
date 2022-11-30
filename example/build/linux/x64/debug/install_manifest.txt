@@ -1,0 +1,11 @@
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/mysample
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/xuan/nfs_share/flutter/flutter_ui_example/example/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json

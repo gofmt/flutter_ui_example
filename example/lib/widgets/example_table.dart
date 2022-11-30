@@ -12,875 +12,881 @@ class _ExampleGridViewState extends State<ExampleGridView> {
   double font = 19.0;
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(),
-      //确定此表各列的水平范围。
-      // columnWidths: const <int, TableColumnWidth>{
-      //   0: IntrinsicColumnWidth(),
-      //   1: FlexColumnWidth(),
-      //   2: IntrinsicColumnWidth(), //FixedColumnWidth(64),
-      // },
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      children: [
-        TableRow(
-          children: [
-            //4 巽
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('九宫格'),
+        centerTitle: true,
+      ),
+      body: Table(
+        border: TableBorder.all(),
+        //确定此表各列的水平范围。
+        // columnWidths: const <int, TableColumnWidth>{
+        //   0: IntrinsicColumnWidth(),
+        //   1: FlexColumnWidth(),
+        //   2: IntrinsicColumnWidth(), //FixedColumnWidth(64),
+        // },
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: [
+          TableRow(
+            children: [
+              //4 巽
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "巽", style: TextStyle(fontSize: font - 6, color: Colors.green), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "巽", style: TextStyle(fontSize: font - 6, color: Colors.green), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            //离
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              //离
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "离", style: TextStyle(fontSize: font - 6, color: Colors.red), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "离", style: TextStyle(fontSize: font - 6, color: Colors.red), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            // 坤
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              // 坤
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "坤", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "坤", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        //震
-        TableRow(
-          children: [
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+            ],
+          ),
+          //震
+          TableRow(
+            children: [
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "震", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 23, 129, 60)), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "震", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 23, 129, 60)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            // 中
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              // 中
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "中", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 200, 26, 219)), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "中", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 200, 26, 219)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            // 兑
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              // 兑
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "兑", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 221, 7)), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "兑", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 221, 7)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        TableRow(
-          children: [
-            //艮
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+            ],
+          ),
+          TableRow(
+            children: [
+              //艮
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "艮", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 206, 6)), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "艮", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 206, 6)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            // 坎
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              // 坎
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "坎", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "坎", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-            // 乾
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.middle,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八神",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八神 on clicked...");
-                            },
+              // 乾
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八神",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八神 on clicked...");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    )
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "九星",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("star clicked");
-                            },
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      )
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "九星",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("star clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "天盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("天盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "天盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("天盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "八门",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("八门 on clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "八门",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("八门 on clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "地盘干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("地盘干 clicked");
-                            },
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "地盘干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("地盘干 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  TableRow(children: [
-                    TableCell(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "暗干",
-                          style: TextStyle(fontSize: font, color: Colors.black),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("暗干-宫内克应 clicked");
-                            },
+                    ]),
+                    TableRow(children: [
+                      TableCell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: "暗干",
+                            style: TextStyle(fontSize: font, color: Colors.black),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("暗干-宫内克应 clicked");
+                              },
+                          ),
                         ),
                       ),
-                    ),
-                    TableCell(
-                      child: RichText(text: TextSpan(text: "乾", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 7, 50, 225)), recognizer: TapGestureRecognizer()..onTap = () {})),
-                    ),
-                  ]),
-                ],
+                      TableCell(
+                        child: RichText(text: TextSpan(text: "乾", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 7, 50, 225)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
