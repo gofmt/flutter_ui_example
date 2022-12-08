@@ -72,7 +72,7 @@ class DayBox extends StatelessWidget {
           ? richText
           : Container(
               width: screenWidth / 8,
-              height: screenWidth / 8 / 3,
+              height: screenWidth / 8 / 3, //阴历节日高度位置
               child: MarqueeWidget(
                 text: str,
                 textStyle: TextStyle(fontSize: 12, color: Colors.redAccent),
@@ -99,18 +99,22 @@ class DayBox extends StatelessWidget {
     stackChildren.add(Container(
         decoration: BoxDecoration(
       color: backgroundColor,
-      border: Border.all(
-          width: selected ? 2.0 : 0.1,
-          color: selected ? Colors.red : Colors.black38),
+      border: Border.all(width: selected ? 2.0 : 0.1, color: selected ? Colors.red : Colors.black38),
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
     )));
 
     // 日期数字
-    stackChildren.add(Container(
+    stackChildren.add(
+      Container(
         alignment: Alignment.center,
-        child: Text("${date.day}",
-            style:
-                TextStyle(fontSize: screenWidth / 20, color: Colors.black))));
+        child: Text("${date.day}", style: TextStyle(fontSize: screenWidth / 25, color: Colors.black)),
+      ),
+    );
+
+    // 添加任务图标
+    // if (showNoteIcon) {
+    //   stackChildren.add(Container(alignment: Alignment.centerLeft, child: Icon(Icons.event_note, size: screenWidth / 27, color: noteActive ? Colors.orange : Colors.grey)));
+    // }
 
     // 需要显示月份的情况
     if (null != gregorianStrs) {
@@ -122,14 +126,16 @@ class DayBox extends StatelessWidget {
     }
 
     return GestureDetector(
-        onTap: () {
-          if (null != onSelectCallback) {
-            onSelectCallback(date, !selected);
-          }
-        },
-        child: Container(
-            width: screenWidth / 8,
-            height: screenWidth / 8,
-            child: Stack(children: stackChildren)));
+      onTap: () {
+        if (null != onSelectCallback) {
+          onSelectCallback(date, !selected);
+        }
+      },
+      child: Container(
+        width: screenWidth / 8,
+        height: screenWidth / 6.6, //8// 日历子部件高度
+        child: Stack(children: stackChildren),
+      ),
+    );
   }
 }

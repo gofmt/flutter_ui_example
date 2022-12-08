@@ -30,15 +30,15 @@ class _HomePage extends StatefulWidget {
 class _HomePageState extends State<_HomePage> {
   @override
   Widget build(BuildContext context) {
-    NoteIconType _noteIconTypeFn(DateTime date) {
-      return NoteIconType.colorful;
-    }
-
     return MonthView(
-      onDateSelectedFn: (DateTime selectedDate) {},
-      onMonthChangeFn: (DateTime showMonth) {},
+      onDateSelectedFn: (DateTime selectedDate) {
+        //globalData.selectedDate = selectedDate;
+      },
+      onMonthChangeFn: (DateTime showMonth) {
+        // globalData.monthViewShowDate = showMonth;
+      },
       initDate: null,
-      noteIconTypeFn: _noteIconTypeFn,
+      //noteIconTypeFn: _noteIconTypeFn,
     );
   }
 }

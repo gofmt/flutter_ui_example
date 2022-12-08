@@ -29,11 +29,7 @@ class MonthViewActionBar extends StatelessWidget {
       child: TextButton(
 //        color: Colors.lightBlueAccent,
         child: Text(
-          "${showMonth.year}年" +
-              ((showMonth.month < 10) ? "  " : "") +
-              "${showMonth.month}月 " +
-              ((showMonth.day < 10) ? " " : "") +
-              "${showMonth.day}日",
+          "${showMonth.year}年" + ((showMonth.month < 10) ? "  " : "") + "${showMonth.month}月 " + ((showMonth.day < 10) ? " " : "") + "${showMonth.day}日",
           style: TextStyle(fontSize: screenWidth / 15, color: Colors.black),
         ),
         onPressed: () async {
@@ -94,10 +90,7 @@ class MonthViewActionBar extends StatelessWidget {
               child: FittedBox(
                 child: Text(
                   "返回\n今日",
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: screenWidth / 15,
-                      decoration: TextDecoration.none),
+                  style: TextStyle(color: Colors.red, fontSize: screenWidth / 15, decoration: TextDecoration.none),
                 ),
               ),
             ),
@@ -154,8 +147,7 @@ class MonthViewActionBar extends StatelessWidget {
             ],
           ),
           onPressed: () {
-            var lastMonth =
-                DateTime(showMonth.year, showMonth.month - 1, showMonth.day);
+            var lastMonth = DateTime(showMonth.year, showMonth.month - 1, showMonth.day);
             if (lastMonth.day != showMonth.day) {
               lastMonth = DateTime(showMonth.year, showMonth.month, 0);
             }
@@ -174,8 +166,7 @@ class MonthViewActionBar extends StatelessWidget {
             Icon(Icons.arrow_forward_ios),
           ]),
           onPressed: () {
-            var nextMonth =
-                DateTime(showMonth.year, showMonth.month + 1, showMonth.day);
+            var nextMonth = DateTime(showMonth.year, showMonth.month + 1, showMonth.day);
             if (nextMonth.day != showMonth.day) {
               nextMonth = DateTime(showMonth.year, showMonth.month + 2, 0);
             }
@@ -198,9 +189,7 @@ class MonthViewActionBar extends StatelessWidget {
             child: Column(
           children: [
             Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: lineAction),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: lineAction),
             ),
             Stack(
               alignment: AlignmentDirectional.center,
