@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:calendar_todo/zong_jiao_jie_ri.dart';
 import 'package:event_bus/event_bus.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,6 +151,7 @@ class MonthViewState extends State<MonthView> {
   EventBus _eventBus = EventBus();
   StreamSubscription subscription;
 
+  double font = 18; //PC端默认字体大小
   @override
   initState() {
     super.initState();
@@ -156,6 +159,9 @@ class MonthViewState extends State<MonthView> {
       widget._setShowDate(newDt);
       setState(() {});
     });
+
+    ///Android默认字体大小
+    Platform.isAndroid ? font = _width / 30 : font;
   }
 
   @override
@@ -184,6 +190,7 @@ class MonthViewState extends State<MonthView> {
     return _list;
   }
 
+  String moonName = ''; //宗教节日
   void _prepareNoteStr(LunarMonth lunarMonth, _MonthInfo monthInfo, int day, List<TextSpan> lunarStrs, List<TextSpan> gregorianStrs) {
     if (null == lunarMonth) {
       return;
@@ -195,30 +202,34 @@ class MonthViewState extends State<MonthView> {
     ///二十八宿(日禽)
     String riqin = lunarMonth.GetRiQin(lunarDayInfo.weekday, lunarDayInfo.gzDay);
 
+    ///阴历月日
+    moonName = "${lunarDayInfo.lunarMonthName}${lunarDayInfo.lunarDayName}";
+    moonName = zjjr[moonName];
+
     //农历信息+
     lunarStrs.clear();
     if (1 == lunarDayInfo.lunarDay) {
       //农历月份
       lunarStrs.addAll([
-        TextSpan(text: lunarDayInfo.lunarMonthName, style: TextStyle(color: Colors.orange, fontSize: 12)),
-        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
+        TextSpan(text: lunarDayInfo.lunarMonthName, style: TextStyle(color: Colors.orange, fontSize: font)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: font)),
       ]);
       lunarStrs.addAll([
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: font)),
       ]);
     }
 
     //农历日期
     lunarStrs.addAll([
-      TextSpan(text: lunarDayInfo.lunarDayName + " " + riqin, style: TextStyle(color: Colors.indigo, fontSize: 14)),
-      TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
+      TextSpan(text: lunarDayInfo.lunarDayName + " " + riqin, style: TextStyle(color: Colors.indigo, fontSize: font)),
+      TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: font)),
     ]);
 
     if ("" != lunarDayInfo.lunarFestival) {
       lunarStrs.addAll([
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: font)),
       ]);
       //农历节日
       lunarStrs.addAll([
@@ -250,8 +261,8 @@ class MonthViewState extends State<MonthView> {
       }
       //节气
       gregorianStrs.addAll([
-        TextSpan(text: lunarDayInfo.jieqi, style: TextStyle(color: Colors.red, fontSize: 12)),
-        TextSpan(text: " ", style: TextStyle(color: Colors.grey, fontSize: 12)),
+        TextSpan(text: lunarDayInfo.jieqi, style: TextStyle(color: Colors.red, fontSize: font)),
+        TextSpan(text: " ", style: TextStyle(color: Colors.grey, fontSize: font)),
       ]);
     }
 
@@ -264,8 +275,8 @@ class MonthViewState extends State<MonthView> {
     ///添加日干支
     if (lunarDayInfo.jieqi == "") {
       gregorianStrs.addAll([
-        TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14)),
-        TextSpan(text: jianchu, style: TextStyle(color: Colors.black38, fontSize: 14)),
+        TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.lightBlueAccent, fontSize: font)),
+        TextSpan(text: jianchu, style: TextStyle(color: Colors.black38, fontSize: font)),
       ]);
     }
 
@@ -303,7 +314,7 @@ class MonthViewState extends State<MonthView> {
       List<TextSpan> lunarStrs = [], gregorianStrs = [];
       _prepareNoteStr(lunarMonth, monthInfo, day, lunarStrs, gregorianStrs);
 
-      days.add(DayBox(date, _width,
+      days.add(DayBox(moonName, font, date, _width,
           // showNoteIcon: (noteIconType != NoteIconType.none),
           // noteActive: (noteIconType == NoteIconType.colorful),
           selected: selected,

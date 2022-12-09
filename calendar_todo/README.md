@@ -29,11 +29,12 @@ flutter build apk --obfuscate --split-debug-info=build --release --build-name=1.
 1. 日干支
 2. 日建除
 3. 二十八宿(日禽)
+4. 宗教节日
 
 # 待修正
 
 1. 阳历日期节日滚动显示不完整
-2. 
+2. 宗教节日显示到页面底部
 
 ![calendar](./calendar.png)
 

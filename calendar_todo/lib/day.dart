@@ -34,6 +34,8 @@ class TitleDay extends StatelessWidget {
 }
 
 class DayBox extends StatelessWidget {
+  final String zongJiao;
+  final double font;
   final double screenWidth;
   final DateTime date;
   final bool showNoteIcon;
@@ -46,6 +48,8 @@ class DayBox extends StatelessWidget {
   final Function(DateTime, bool) onSelectCallback;
 
   DayBox(
+    this.zongJiao,
+    this.font,
     this.date,
     this.screenWidth, {
     this.showNoteIcon = false,
@@ -78,7 +82,7 @@ class DayBox extends StatelessWidget {
               height: screenWidth / 8 / 3, //阴历节日高度位置
               child: MarqueeWidget(
                 text: str,
-                textStyle: TextStyle(fontSize: 12, color: Colors.redAccent),
+                textStyle: TextStyle(fontSize: font, color: Colors.redAccent),
                 scrollAxis: Axis.horizontal,
                 ratioOfBlankToScreen: 0.05,
               ),
@@ -111,7 +115,7 @@ class DayBox extends StatelessWidget {
     stackChildren.add(
       Container(
         alignment: Alignment.center,
-        child: Text("${date.day}", style: TextStyle(fontSize: screenWidth / 25, color: Colors.black)),
+        child: Text("${date.day}", style: TextStyle(fontSize: font, color: Colors.black)), //screenWidth / 25
       ),
     );
 
@@ -132,7 +136,7 @@ class DayBox extends StatelessWidget {
       },
       child: Container(
         width: screenWidth / 8,
-        height: screenWidth / 6.6, //8// 日历子部件高度
+        height: screenWidth / 7, //8// 日历子部件高度
         child: Stack(children: stackChildren),
       ),
     );
