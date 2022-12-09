@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.calendar_todo">
+    package="com.amrta.calendar">
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
    <application
-        android:label="calendar_todo"
+        android:label="干支历"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

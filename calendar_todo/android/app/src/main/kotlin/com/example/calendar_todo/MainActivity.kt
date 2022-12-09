@@ -1,4 +1,4 @@
-package com.example.calendar_todo
+package com.amrta.calendar
 
 import io.flutter.embedding.android.FlutterActivity
 

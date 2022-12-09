@@ -30,6 +30,7 @@ class DayInfo {
   int day; // 公历日，从1开示
   int DayIndex; //  所在公历月内日序数
   double d0; // 2000.0起算儒略日,北京时12:00
+  int weekday; //本日周几 计算日禽
 
 //  #region 农历信息
   int lunarMonth; //农历月，1对应正月
@@ -126,12 +127,10 @@ class DayInfo {
       this.lunarFestival += lunarfestivals[str1] ?? "";
 
       // 月用倒数序的节日
-      final invertFestivalFmt =
-          "${this.lunarMonth}.-${this.Ldn.toInt() - this.lunarDay + 1}";
+      final invertFestivalFmt = "${this.lunarMonth}.-${this.Ldn.toInt() - this.lunarDay + 1}";
       final invertFestival = lunarfestivals[invertFestivalFmt];
       if (null != invertFestival) {
-        this.lunarFestival +=
-            (("" != this.lunarFestival) ? "," : "") + invertFestival;
+        this.lunarFestival += (("" != this.lunarFestival) ? "," : "") + invertFestival;
       }
     }
 
@@ -139,18 +138,14 @@ class DayInfo {
     final everyMonthFestivalFmt = "0.${this.lunarDay}";
     final everyMonthFestival = lunarfestivals[everyMonthFestivalFmt];
     if (null != everyMonthFestival) {
-      this.lunarFestival +=
-          (("" != this.lunarFestival) ? "," : "") + everyMonthFestival;
+      this.lunarFestival += (("" != this.lunarFestival) ? "," : "") + everyMonthFestival;
     }
 
     // 每月用倒数序的节日
-    final everyMonthInvertFestivalFmt =
-        "0.-${this.Ldn.toInt() - this.lunarDay + 1}";
-    final everyMonthInvertFestival =
-        lunarfestivals[everyMonthInvertFestivalFmt];
+    final everyMonthInvertFestivalFmt = "0.-${this.Ldn.toInt() - this.lunarDay + 1}";
+    final everyMonthInvertFestival = lunarfestivals[everyMonthInvertFestivalFmt];
     if (null != everyMonthInvertFestival) {
-      this.lunarFestival +=
-          (("" != this.lunarFestival) ? "," : "") + everyMonthInvertFestival;
+      this.lunarFestival += (("" != this.lunarFestival) ? "," : "") + everyMonthInvertFestival;
     }
   }
 
@@ -182,8 +177,7 @@ class LunarMonth {
     double curTZ = -8;
 
     //J2000起算的儒略日数(当前本地时间)
-    double curJD =
-        Tool.NowUTCmsSince19700101(dt) / 86400000 - 10957.5 - curTZ / 24;
+    double curJD = Tool.NowUTCmsSince19700101(dt) / 86400000 - 10957.5 - curTZ / 24;
 
     JD.setFromJD(curJD + LunarHelper.J2000); // 设置JD环境
 
@@ -227,18 +221,14 @@ class LunarMonth {
       JD.Y++;
       JD.M = 1;
     }
-    int monthDaysCount =
-        (Math.Floor2Double(JD.toJD()) - LunarHelper.J2000 - Bd0)
-            .toInt(); // 本月天数(公历)
+    int monthDaysCount = (Math.Floor2Double(JD.toJD()) - LunarHelper.J2000 - Bd0).toInt(); // 本月天数(公历)
 
     this.firstWeekday = ((Bd0 + LunarHelper.J2000 + 1) % 7).toInt(); //本月第一天的星期
     this.gregorianYear = By; // 公历年份
     this.gregorianMonth = Bm; // 公历月分
     this.day0 = Bd0;
     this.monthDaysCount = monthDaysCount;
-    this.weeksCount =
-        Math.Floor2Int((this.firstWeekday + monthDaysCount - 1) / 7) +
-            1; // 本月的总周数
+    this.weeksCount = Math.Floor2Int((this.firstWeekday + monthDaysCount - 1) / 7) + 1; // 本月的总周数
 
     getLunarYearInfo(By); // 农历年信息：天干地支，生肖，年号
 
@@ -261,9 +251,7 @@ class LunarMonth {
 
       // 农历月历
 
-      if ((SSQ.ZQ.Count == 0) ||
-          (day.d0 < SSQ.ZQ[0]) ||
-          (day.d0 >= SSQ.ZQ[24])) {
+      if ((SSQ.ZQ.Count == 0) || (day.d0 < SSQ.ZQ[0]) || (day.d0 >= SSQ.ZQ[24])) {
         // 如果d0已在计算农历范围内则不再计算
         SSQ.calcY(day.d0);
       }
@@ -272,8 +260,7 @@ class LunarMonth {
         mk++;
       } // 农历所在月的序数
 
-      day.lunarDay =
-          (day.d0 - SSQ.HS[mk]).toInt() + 1; // 农历日，由距农历月首的编移量+1,1对应初一
+      day.lunarDay = (day.d0 - SSQ.HS[mk]).toInt() + 1; // 农历日，由距农历月首的编移量+1,1对应初一
       day.lunarDayName = obb.rmc[day.lunarDay - 1]; // 农历日名称
 
       // 节气相关的内容
@@ -328,10 +315,7 @@ class LunarMonth {
 
       // 干支纪年处理
       // 以立春为界定年首
-      D = SSQ.ZQ[3] +
-          (day.d0 < SSQ.ZQ[3] ? -365 : 0) +
-          365.25 * 16 -
-          35; //以立春为界定纪年
+      D = SSQ.ZQ[3] + (day.d0 < SSQ.ZQ[3] ? -365 : 0) + 365.25 * 16 - 35; //以立春为界定纪年
       day.Lyear = Math.Floor2Double(D / 365.2422 + 0.5); //农历纪年(10进制,1984年起算)
 
       // 以下几行以正月初一定年首
@@ -351,11 +335,9 @@ class LunarMonth {
       day.Lyear0 = Math.Floor2Double(D / 365.2422 + 0.5); // 农历纪年(10进制,1984年起算)
 
       D = day.Lyear + 9000;
-      day.gzYear =
-          obb.Gan[(D % 10).toInt()] + obb.Zhi[(D % 12).toInt()]; // 干支纪年(立春)
+      day.gzYear = obb.Gan[(D % 10).toInt()] + obb.Zhi[(D % 12).toInt()]; // 干支纪年(立春)
       D = day.Lyear0 + 9000;
-      day.Lyear3 =
-          obb.Gan[(D % 10).toInt()] + obb.Zhi[(D % 12).toInt()]; // 干支纪年(正月)
+      day.Lyear3 = obb.Gan[(D % 10).toInt()] + obb.Zhi[(D % 12).toInt()]; // 干支纪年(正月)
       day.Lyear4 = day.Lyear0 + 1984 + 2698; // 黄帝纪年
 
       // 纪月处理,1998年12月7(大雪)开始连续进行节气计数,0为甲子
@@ -364,9 +346,7 @@ class LunarMonth {
         mk++;
       } //相对大雪的月数计算,mk的取值范围0-12
 
-      D = mk +
-          Math.Floor2Double((SSQ.ZQ[12] + 390) / 365.2422) * 12 +
-          900000; //相对于1998年12月7(大雪)的月数,900000为正数基数
+      D = mk + Math.Floor2Double((SSQ.ZQ[12] + 390) / 365.2422) * 12 + 900000; //相对于1998年12月7(大雪)的月数,900000为正数基数
       day.Lmonth = D % 12;
       day.gzMonth = obb.Gan[(D % 10).toInt()] + obb.Zhi[(D % 12).toInt()];
 
@@ -386,6 +366,9 @@ class LunarMonth {
 
       day.getLunarShujiu(); // 数九
       day.getLunarSanfu(); // 三伏
+      ///
+      day.weekday = DateTime(day.year, day.month, day.day).weekday;
+      // print("${day.year}年-${day.month}月-${day.day}日====> 周 ${day.weekday}"); // 2022年-12月-11日====> weekday: 7
     }
 
     // 以下是月相与节气的处理
@@ -415,14 +398,11 @@ class LunarMonth {
 
     // 节气查找
     w = XL.S_aLon(jd2 / 36525, 3);
-    w = Math.Floor2Double((w - 0.13) / LunarHelper.pi2 * 24) *
-        LunarHelper.pi2 /
-        24;
+    w = Math.Floor2Double((w - 0.13) / LunarHelper.pi2 * 24) * LunarHelper.pi2 / 24;
     do {
       d = obb.qi_accurate(w);
       D = Math.Floor2Double(d + 0.5);
-      xn = Math.Floor2Double(w / LunarHelper.pi2 * 24 + 24000006.01).toInt() %
-          24;
+      xn = Math.Floor2Double(w / LunarHelper.pi2 * 24 + 24000006.01).toInt() % 24;
       w += LunarHelper.pi2 / 24;
       if (D >= Bd0 + monthDaysCount) {
         break;
@@ -443,8 +423,7 @@ class LunarMonth {
   getLunarYearInfo(int By) {
     // 所属公历年对应的农历年信息：天干地支，生肖，年号
     int ganzhiYear = By - 1984 + 9000;
-    this.ganzhiYear =
-        obb.Gan[(ganzhiYear % 10)] + obb.Zhi[(ganzhiYear % 12)]; //干支纪年
+    this.ganzhiYear = obb.Gan[(ganzhiYear % 10)] + obb.Zhi[(ganzhiYear % 12)]; //干支纪年
     this.shengxiao = obb.ShX[(ganzhiYear % 12)]; // 该年对应的生肖
     this.nianhao = obb.getNianhao(By);
   }
@@ -492,8 +471,77 @@ class LunarMonth {
       // 可直接使用该属性的月建而无需再次计算节气, 但上述被注释的代码也可用(主要为了测试 CalcJieQiInfo 方法, 暂保留)
       yuejian = LunarHelper.SUBSTRING(lunDay.gzMonth, 1, 1);
 
-      lunDay.Ri12Jian = this.GetRi12Jian(
-          yuejian, LunarHelper.SUBSTRING(lunDay.gzDay, 1, 1)); // 计算日十二建
+      lunDay.Ri12Jian = this.GetRi12Jian(yuejian, LunarHelper.SUBSTRING(lunDay.gzDay, 1, 1)); // 计算日十二建
     }
+  }
+
+  /// 日禽
+  /// 周几 日干支
+
+  String GetRiQin(int weekday, String dgz) {
+    int wn = 0;
+    switch (dgz.substring(1, 2)) {
+      case "亥":
+        var w0 = 17;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "卯":
+        var w0 = 17;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "未":
+        var w0 = 17;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "巳":
+        var w0 = 3;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "酉":
+        var w0 = 3;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "丑":
+        var w0 = 3;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "寅":
+        var w0 = 24;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "午":
+        var w0 = 24;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "戌":
+        var w0 = 24;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "申":
+        var w0 = 10;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "子":
+        var w0 = 10;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+      case "辰":
+        var w0 = 10;
+        wn = w0 + 7 * weekday + weekday;
+        wn > 28 ? wn = wn % 28 : null;
+        break;
+    }
+    return obb.starName[wn].substring(0, 1);
   }
 }

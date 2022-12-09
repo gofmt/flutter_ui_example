@@ -45,15 +45,18 @@ class DayBox extends StatelessWidget {
   final List<TextSpan> lunarStrs;
   final Function(DateTime, bool) onSelectCallback;
 
-  DayBox(this.date, this.screenWidth,
-      {this.showNoteIcon = false,
-      this.noteActive = true,
-      this.selected = false,
-      this.baskgroundGrey = false,
-      this.isToday = false,
-      this.gregorianStrs,
-      this.lunarStrs,
-      this.onSelectCallback});
+  DayBox(
+    this.date,
+    this.screenWidth, {
+    this.showNoteIcon = false,
+    this.noteActive = true,
+    this.selected = false,
+    this.baskgroundGrey = false,
+    this.isToday = false,
+    this.gregorianStrs,
+    this.lunarStrs,
+    this.onSelectCallback,
+  });
 
   Widget _buildText(List<TextSpan> strs, AlignmentGeometry alignment) {
     int length = 0;
@@ -61,7 +64,7 @@ class DayBox extends StatelessWidget {
     strs.forEach((var e) {
       length += e.text.length;
       if (length >= 5) {
-        str = "${strs[0].text},${e.text}";
+        str = "${strs[0].text} ${strs[1].text} ${strs[2].text} ${strs[3].text} "; // ${e.text}
       }
     });
     final richText = RichText(text: TextSpan(children: strs));
@@ -83,6 +86,7 @@ class DayBox extends StatelessWidget {
     );
   }
 
+  ///
   @override
   Widget build(BuildContext context) {
     Color backgroundColor;
@@ -110,11 +114,6 @@ class DayBox extends StatelessWidget {
         child: Text("${date.day}", style: TextStyle(fontSize: screenWidth / 25, color: Colors.black)),
       ),
     );
-
-    // 添加任务图标
-    // if (showNoteIcon) {
-    //   stackChildren.add(Container(alignment: Alignment.centerLeft, child: Icon(Icons.event_note, size: screenWidth / 27, color: noteActive ? Colors.orange : Colors.grey)));
-    // }
 
     // 需要显示月份的情况
     if (null != gregorianStrs) {

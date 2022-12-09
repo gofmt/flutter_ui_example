@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'day.dart';
 import 'month_view_action_bar.dart';
 import 'sxwnl/sxwnl_Lunar.dart';
+// import 'user_defined_festival_manager.dart';
 
 // Future<void> showLunarDatePickerDialog({
 //   @required BuildContext context,
@@ -99,7 +100,6 @@ class MonthView extends StatefulWidget {
     _setShowDate(initDate ?? DateTime.now());
     _selectedDate = initDate;
   }
-
   DateTime _showDate;
   _MonthViewDateInfo _monthViewDate;
   DateTime _selectedDate;
@@ -152,7 +152,6 @@ class MonthViewState extends State<MonthView> {
   @override
   initState() {
     super.initState();
-
     subscription = _eventBus.on<DateTime>().listen((DateTime newDt) {
       widget._setShowDate(newDt);
       setState(() {});
@@ -185,16 +184,16 @@ class MonthViewState extends State<MonthView> {
     return _list;
   }
 
-  void _prepareNoteStr(LunarMonth lunarMonth, _MonthInfo monthInfo, int day,
-      List<TextSpan> lunarStrs, List<TextSpan> gregorianStrs) {
+  void _prepareNoteStr(LunarMonth lunarMonth, _MonthInfo monthInfo, int day, List<TextSpan> lunarStrs, List<TextSpan> gregorianStrs) {
     if (null == lunarMonth) {
       return;
     }
 
-    assert((lunarMonth.monthDaysCount == monthInfo.daysCount) &&
-        (lunarMonth.gregorianMonth == monthInfo.month) &&
-        (lunarMonth.gregorianYear == monthInfo.year));
+    assert((lunarMonth.monthDaysCount == monthInfo.daysCount) && (lunarMonth.gregorianMonth == monthInfo.month) && (lunarMonth.gregorianYear == monthInfo.year));
     var lunarDayInfo = lunarMonth.days[day - 1];
+
+    ///二十八宿(日禽)
+    String riqin = lunarMonth.GetRiQin(lunarDayInfo.weekday, lunarDayInfo.gzDay);
 
     //农历信息+
     lunarStrs.clear();
@@ -202,24 +201,24 @@ class MonthViewState extends State<MonthView> {
       //农历月份
       lunarStrs.addAll([
         TextSpan(text: lunarDayInfo.lunarMonthName, style: TextStyle(color: Colors.orange, fontSize: 12)),
-        TextSpan(text: ",", style: TextStyle(color: Colors.grey)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
       ]);
       lunarStrs.addAll([
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-        TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
       ]);
     }
 
     //农历日期
     lunarStrs.addAll([
-      TextSpan(text: lunarDayInfo.lunarDayName, style: TextStyle(color: Colors.grey, fontSize: 12)),
-      TextSpan(text: ",", style: TextStyle(color: Colors.grey)),
+      TextSpan(text: lunarDayInfo.lunarDayName + " " + riqin, style: TextStyle(color: Colors.indigo, fontSize: 14)),
+      TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
     ]);
 
     if ("" != lunarDayInfo.lunarFestival) {
       lunarStrs.addAll([
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-        TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+        TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: 12)),
       ]);
       //农历节日
       lunarStrs.addAll([
@@ -227,6 +226,7 @@ class MonthViewState extends State<MonthView> {
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
       ]);
     }
+    // lunarStrs.addAll(_getUserDefinedLunarFestival(lunarDayInfo.month, lunarDayInfo.lunarDay, lunarDayInfo.lunarMonthDayCount));
 
     if (lunarStrs.isNotEmpty) {
       lunarStrs.removeLast();
@@ -237,7 +237,7 @@ class MonthViewState extends State<MonthView> {
     if (1 == lunarDayInfo.day) {
       gregorianStrs.addAll([
         TextSpan(text: "${monthInfo.month}月", style: TextStyle(color: Colors.orange, decoration: TextDecoration.none)),
-        TextSpan(text: " ", style: TextStyle(color: Colors.grey, decoration: TextDecoration.none)),
+        TextSpan(text: ",", style: TextStyle(color: Colors.grey, decoration: TextDecoration.none)),
       ]);
     }
 
@@ -264,8 +264,8 @@ class MonthViewState extends State<MonthView> {
     ///添加日干支
     if (lunarDayInfo.jieqi == "") {
       gregorianStrs.addAll([
-        TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.lightBlueAccent, fontSize: 12)),
-        TextSpan(text: jianchu, style: TextStyle(color: Colors.black38, fontSize: 12)),
+        TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14)),
+        TextSpan(text: jianchu, style: TextStyle(color: Colors.black38, fontSize: 14)),
       ]);
     }
 
@@ -286,6 +286,8 @@ class MonthViewState extends State<MonthView> {
         TextSpan(text: "", style: TextStyle(color: Colors.grey)),
       ]);
     }
+    // gregorianStrs.addAll(_getUserDefinedGregorianFestival(monthInfo.month, day, monthInfo.daysCount));
+
     // if (gregorianStrs.isNotEmpty) {
     //   gregorianStrs.removeLast();
     // }
@@ -341,8 +343,7 @@ class MonthViewState extends State<MonthView> {
     days = _generateDays(monthInfo, lunarMonth, true, today);
     _list.addAll(days);
 
-    assert(
-        (28 == _list.length) || (35 == _list.length) || (42 == _list.length));
+    assert((28 == _list.length) || (35 == _list.length) || (42 == _list.length));
     return _list;
   }
 
@@ -352,8 +353,7 @@ class MonthViewState extends State<MonthView> {
             //color: Colors.lightBlueAccent,
             //border: Border.all(width: 1.0, color: Colors.black38),
             borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: list));
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: list));
   }
 
   List<Widget> _martrix(final List _weekdays, final List _dayList) {
@@ -386,6 +386,7 @@ class MonthViewState extends State<MonthView> {
         toolbarHeight: 30,
       ),
       body: Container(
+        //height: _height,
         decoration: BoxDecoration(
           color: Colors.grey[50],
           border: Border.all(width: 1.0, color: Colors.black38),
@@ -394,6 +395,7 @@ class MonthViewState extends State<MonthView> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            //头部信息 上一年 下一年.....返回首页
             MonthViewActionBar(
               screenWidth: _width,
               showMonth: widget._selectedDate ?? widget._showDate,
@@ -408,15 +410,17 @@ class MonthViewState extends State<MonthView> {
                 setState(() {});
               },
             ),
+            //日历方框
             Container(
               width: _width * 8 / 9,
-//            height: screenWidth  * 8/ 9,
+              // height: _height * 0.8, //screenWidth  * 8/ 9,
               margin: EdgeInsets.all(_width / 50),
               padding: EdgeInsets.all(_width / 50),
               decoration: BoxDecoration(
                 border: Border.all(width: 1.0, color: Colors.black38),
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
               ),
+              //显示日历具体信息
               child: FittedBox(
                 alignment: Alignment.topCenter,
                 child: Column(children: _table),
@@ -430,11 +434,7 @@ class MonthViewState extends State<MonthView> {
 }
 
 bool _isSameDay(final DateTime dt1, final DateTime dt2) {
-  return ((null != dt1) &&
-      (null != dt2) &&
-      (dt1.day == dt2.day) &&
-      (dt1.month == dt2.month) &&
-      (dt1.year == dt2.year));
+  return ((null != dt1) && (null != dt2) && (dt1.day == dt2.day) && (dt1.month == dt2.month) && (dt1.year == dt2.year));
 }
 
 class _MonthInfo {
@@ -468,8 +468,7 @@ class _MonthViewDateInfo {
 
       if (1 == showFirstWeekday) {
         lastMonthInfo.showCount = thisMonthFirstWeedday - 1;
-        lastMonthInfo.firstShowDay =
-            lastMonthInfo.daysCount - lastMonthInfo.showCount + 1;
+        lastMonthInfo.firstShowDay = lastMonthInfo.daysCount - lastMonthInfo.showCount + 1;
         lastMonthInfo.lastShowDay = lastMonth.day;
       }
 

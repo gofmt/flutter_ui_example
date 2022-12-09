@@ -51,7 +51,9 @@ class MonthViewActionBar extends StatelessWidget {
             context: context,
             builder: (context) {
               return Container(
+//                width: screenWidth,
                 height: 300,
+//                color: Colors.red,
                 child: CupertinoDatePicker(
                   mode: CupertinoDatePickerMode.date,
                   onDateTimeChanged: (DateTime pickDate) {
@@ -70,10 +72,36 @@ class MonthViewActionBar extends StatelessWidget {
       ),
     ));
 
+//    lineTitle.add(
+//      SizedBox(width: screenWidth / 50),
+//    );
+
     lineTitle.add(
       Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+//           GestureDetector(
+//             onTap: () {
+//               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+//                 return Scaffold(
+//                   appBar: AppBar(title: Text('自定义节日')),
+//                   body: FestirvalEditor(getFestivalText(), onSaveFn),
+//                 );
+//               }));
+//             },
+//             child: Container(
+//               width: screenWidth / 8,
+//               height: screenWidth / 8,
+//               decoration: BoxDecoration(
+// //                color: Colors.yellowAccent,
+//                 border: Border.all(width: 2.0, color: Colors.black38),
+//                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
+//               ),
+//               child: FittedBox(
+//                 child: Text("节日\n管理", style: TextStyle(color: Colors.indigoAccent, fontSize: screenWidth / 15)),
+//               ),
+//             ),
+//           ),
           SizedBox(width: screenWidth * 4 / 5),
           GestureDetector(
             onTap: () {
@@ -103,6 +131,7 @@ class MonthViewActionBar extends StatelessWidget {
     lineAction.add(
       Container(
         child: TextButton(
+          //  color: Colors.orange,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -122,6 +151,7 @@ class MonthViewActionBar extends StatelessWidget {
     lineAction.add(
       Container(
         child: TextButton(
+          //color: Colors.orange,
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Text("下一年", style: TextStyle(fontSize: screenWidth / 25)),
             Icon(Icons.arrow_forward_ios),
@@ -137,7 +167,9 @@ class MonthViewActionBar extends StatelessWidget {
     lineAction.add(SizedBox(width: screenWidth / 50));
     lineAction.add(
       Container(
+        //color: Colors.orange,
         child: TextButton(
+          // color: Colors.cyan,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -160,7 +192,9 @@ class MonthViewActionBar extends StatelessWidget {
     lineAction.add(SizedBox(width: screenWidth / 500));
     lineAction.add(
       Container(
+//        color: Colors.orange,
         child: TextButton(
+          // color: Colors.cyan,
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Text("下一月", style: TextStyle(fontSize: screenWidth / 25)),
             Icon(Icons.arrow_forward_ios),
@@ -182,6 +216,7 @@ class MonthViewActionBar extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
+          //color: Colors.redAccent,
           border: Border.all(width: 0.5, color: Colors.black38),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
