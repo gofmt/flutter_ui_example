@@ -34,7 +34,9 @@ class TitleDay extends StatelessWidget {
 }
 
 class DayBox extends StatelessWidget {
+  //传入宗教节日
   final String zongJiao;
+  //
   final double font;
   final double screenWidth;
   final DateTime date;
@@ -46,6 +48,9 @@ class DayBox extends StatelessWidget {
   final List<TextSpan> gregorianStrs;
   final List<TextSpan> lunarStrs;
   final Function(DateTime, bool) onSelectCallback;
+
+  ///双击返回宗教节日
+  final String Function(String zongJiao) onDoubleTapCallback;
 
   DayBox(
     this.zongJiao,
@@ -60,6 +65,8 @@ class DayBox extends StatelessWidget {
     this.gregorianStrs,
     this.lunarStrs,
     this.onSelectCallback,
+    //
+    this.onDoubleTapCallback,
   });
 
   Widget _buildText(List<TextSpan> strs, AlignmentGeometry alignment) {
@@ -68,7 +75,8 @@ class DayBox extends StatelessWidget {
     strs.forEach((var e) {
       length += e.text.length;
       if (length >= 5) {
-        str = "${strs[0].text} ${strs[1].text} ${strs[2].text} ${strs[3].text} "; // ${e.text}
+        str = "${strs[0].text} ${strs[1].text} ${strs[2].text} ${strs[3].text} ${e.text}"; // ${e.text}
+
       }
     });
     final richText = RichText(text: TextSpan(children: strs));
@@ -90,7 +98,6 @@ class DayBox extends StatelessWidget {
     );
   }
 
-  ///
   @override
   Widget build(BuildContext context) {
     Color backgroundColor;
@@ -132,6 +139,12 @@ class DayBox extends StatelessWidget {
       onTap: () {
         if (null != onSelectCallback) {
           onSelectCallback(date, !selected);
+        }
+      },
+      //返回宗教节日到月视图页面
+      onDoubleTap: () {
+        if (onDoubleTapCallback != null) {
+          onDoubleTapCallback(zongJiao);
         }
       },
       child: Container(

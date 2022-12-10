@@ -2,16 +2,14 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:calendar_todo/zong_jiao_jie_ri.dart';
 import 'package:event_bus/event_bus.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'day.dart';
 import 'month_view_action_bar.dart';
 import 'sxwnl/sxwnl_Lunar.dart';
-// import 'user_defined_festival_manager.dart';
+import 'zong_jiao_jie_ri.dart';
 
 // Future<void> showLunarDatePickerDialog({
 //   @required BuildContext context,
@@ -93,6 +91,7 @@ class MonthView extends StatefulWidget {
   final Function(DateTime selectedDate) onDateSelectedFn;
   final Function(DateTime showMonth) onMonthChangeFn;
   // final NoteIconType Function(DateTime date) noteIconTypeFn;
+
   MonthView({
     this.onDateSelectedFn,
     this.onMonthChangeFn,
@@ -140,11 +139,21 @@ class MonthViewState extends State<MonthView> {
 
   Function(DateTime, bool) _onDaySelectedFn;
 
+  ///
+  var zongjiaostr = '';
+  Function(String str) _onZongJiaoFn;
+  //
   MonthViewState() {
     _onDaySelectedFn = (DateTime date, bool selected) {
       widget._selectedDate = selected ? date : null;
       widget.onDateSelectedFn(widget._selectedDate);
       setState(() {});
+    };
+    _onZongJiaoFn = (String str) {
+      zongjiaostr = str;
+      setState(() {
+        zongjiaostr;
+      });
     };
   }
 
@@ -167,7 +176,6 @@ class MonthViewState extends State<MonthView> {
   @override
   dispose() {
     _eventBus.destroy();
-
     super.dispose();
   }
 
@@ -202,9 +210,14 @@ class MonthViewState extends State<MonthView> {
     ///二十八宿(日禽)
     String riqin = lunarMonth.GetRiQin(lunarDayInfo.weekday, lunarDayInfo.gzDay);
 
-    ///阴历月日
+    ///阴历月日 宗教节日
     moonName = "${lunarDayInfo.lunarMonthName}${lunarDayInfo.lunarDayName}";
     moonName = zjjr[moonName];
+
+    ///日建除
+    String yueJian = lunarDayInfo.gzMonth.substring(1, 2);
+    String riZhi = lunarDayInfo.gzDay.substring(1, 2);
+    String jianchu = lunarMonth.GetRi12Jian(yueJian, riZhi);
 
     //农历信息+
     lunarStrs.clear();
@@ -222,7 +235,7 @@ class MonthViewState extends State<MonthView> {
 
     //农历日期
     lunarStrs.addAll([
-      TextSpan(text: lunarDayInfo.lunarDayName + " " + riqin, style: TextStyle(color: Colors.indigo, fontSize: font)),
+      TextSpan(text: lunarDayInfo.lunarDayName, style: TextStyle(color: Colors.indigo, fontSize: font)),
       TextSpan(text: "", style: TextStyle(color: Colors.black, fontSize: font)),
     ]);
 
@@ -233,8 +246,13 @@ class MonthViewState extends State<MonthView> {
       ]);
       //农历节日
       lunarStrs.addAll([
-        TextSpan(text: lunarDayInfo.lunarFestival, style: TextStyle(color: Colors.blue)),
-        TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+        TextSpan(text: lunarDayInfo.lunarFestival + " " + riqin, style: TextStyle(color: Colors.blue)),
+        TextSpan(text: " ", style: TextStyle(color: Colors.grey)),
+      ]);
+    } else {
+      lunarStrs.addAll([
+        TextSpan(text: riqin, style: TextStyle(color: Color.fromARGB(255, 30, 112, 150), fontSize: font)),
+        TextSpan(text: " ", style: TextStyle(color: Colors.grey)),
       ]);
     }
     // lunarStrs.addAll(_getUserDefinedLunarFestival(lunarDayInfo.month, lunarDayInfo.lunarDay, lunarDayInfo.lunarMonthDayCount));
@@ -248,29 +266,23 @@ class MonthViewState extends State<MonthView> {
     if (1 == lunarDayInfo.day) {
       gregorianStrs.addAll([
         TextSpan(text: "${monthInfo.month}月", style: TextStyle(color: Colors.orange, decoration: TextDecoration.none)),
-        TextSpan(text: ",", style: TextStyle(color: Colors.grey, decoration: TextDecoration.none)),
+        TextSpan(text: "", style: TextStyle(color: Colors.grey, decoration: TextDecoration.none)),
       ]);
     }
 
     if ("" != lunarDayInfo.jieqi) {
-      if (gregorianStrs.isNotEmpty) {
-        gregorianStrs.addAll([
-          TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-          TextSpan(text: " ", style: TextStyle(color: Colors.grey)),
-        ]);
-      }
+      // if (gregorianStrs.isNotEmpty) {
+      //   gregorianStrs.addAll([
+      //     TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+      //     TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+      //   ]);
+      // }
       //节气
       gregorianStrs.addAll([
         TextSpan(text: lunarDayInfo.jieqi, style: TextStyle(color: Colors.red, fontSize: font)),
-        TextSpan(text: " ", style: TextStyle(color: Colors.grey, fontSize: font)),
+        TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.grey, fontSize: font - 3)),
       ]);
     }
-
-    ///日建除
-    String yueJian = lunarDayInfo.gzMonth.substring(1, 2);
-    String riZhi = lunarDayInfo.gzDay.substring(1, 2);
-    String jianchu = lunarMonth.GetRi12Jian(yueJian, riZhi);
-    // print("===> jianchu $jianchu");
 
     ///添加日干支
     if (lunarDayInfo.jieqi == "") {
@@ -278,23 +290,24 @@ class MonthViewState extends State<MonthView> {
         TextSpan(text: lunarDayInfo.gzDay, style: TextStyle(color: Colors.lightBlueAccent, fontSize: font)),
         TextSpan(text: jianchu, style: TextStyle(color: Colors.black38, fontSize: font)),
       ]);
+      // gregorianStrs.addAll([
+      //   TextSpan(text: "", style: TextStyle(color: Colors.black12, fontSize: font)),
+      //   TextSpan(text: "", style: TextStyle(color: Colors.black38, fontSize: font)),
+      // ]);
     }
 
     //
     if ("" != lunarDayInfo.gregorianFestival) {
-      if (gregorianStrs.isNotEmpty) {
-        gregorianStrs.addAll([
-          TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-          TextSpan(text: "", style: TextStyle(color: Colors.grey)),
-        ]);
-      }
+      // if (gregorianStrs.isNotEmpty) {
+      //   gregorianStrs.addAll([
+      //     TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+      //     TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+      //   ]);
+      // }
       //公历节日
       gregorianStrs.addAll([
-        TextSpan(
-          text: lunarDayInfo.gregorianFestival,
-          style: TextStyle(color: Colors.orange),
-        ),
-        TextSpan(text: "", style: TextStyle(color: Colors.grey)),
+        TextSpan(text: "", style: TextStyle(color: Colors.orange)),
+        TextSpan(text: lunarDayInfo.gregorianFestival, style: TextStyle(color: Colors.grey)),
       ]);
     }
     // gregorianStrs.addAll(_getUserDefinedGregorianFestival(monthInfo.month, day, monthInfo.daysCount));
@@ -314,15 +327,18 @@ class MonthViewState extends State<MonthView> {
       List<TextSpan> lunarStrs = [], gregorianStrs = [];
       _prepareNoteStr(lunarMonth, monthInfo, day, lunarStrs, gregorianStrs);
 
-      days.add(DayBox(moonName, font, date, _width,
-          // showNoteIcon: (noteIconType != NoteIconType.none),
-          // noteActive: (noteIconType == NoteIconType.colorful),
-          selected: selected,
-          isToday: isToday,
-          baskgroundGrey: baskgroundGrey,
-          gregorianStrs: gregorianStrs,
-          lunarStrs: lunarStrs,
-          onSelectCallback: _onDaySelectedFn));
+      days.add(DayBox(
+        moonName, font, date, _width,
+        // showNoteIcon: (noteIconType != NoteIconType.none),
+        // noteActive: (noteIconType == NoteIconType.colorful),
+        selected: selected,
+        isToday: isToday,
+        baskgroundGrey: baskgroundGrey,
+        gregorianStrs: gregorianStrs,
+        lunarStrs: lunarStrs,
+        onSelectCallback: _onDaySelectedFn,
+        onDoubleTapCallback: _onZongJiaoFn,
+      ));
     }
 
     return days;
@@ -396,50 +412,57 @@ class MonthViewState extends State<MonthView> {
         centerTitle: true,
         toolbarHeight: 30,
       ),
-      body: Container(
-        //height: _height,
-        decoration: BoxDecoration(
-          color: Colors.grey[50],
-          border: Border.all(width: 1.0, color: Colors.black38),
-//        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            //头部信息 上一年 下一年.....返回首页
-            MonthViewActionBar(
-              screenWidth: _width,
-              showMonth: widget._selectedDate ?? widget._showDate,
-              onDateChangeFn: (DateTime day) {
-                widget._setShowDate(day);
-                widget.onMonthChangeFn(day);
+      body:
+//        Container(
+//         //height: _height,
+//         decoration: BoxDecoration(
+//           color: Colors.grey[50],
+//           border: Border.all(width: 1.0, color: Colors.black38),
+// //        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+//         ),
+//         child:
+          Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //头部信息 上一年 下一年.....返回首页
+          MonthViewActionBar(
+            screenWidth: _width,
+            showMonth: widget._selectedDate ?? widget._showDate,
+            onDateChangeFn: (DateTime day) {
+              widget._setShowDate(day);
+              widget.onMonthChangeFn(day);
 
-                if (null != widget._selectedDate) {
-                  widget.onDateSelectedFn(day);
-                  widget._selectedDate = day;
-                }
-                setState(() {});
-              },
+              if (null != widget._selectedDate) {
+                widget.onDateSelectedFn(day);
+                widget._selectedDate = day;
+              }
+              setState(() {});
+            },
+          ),
+          //日历方框
+          Container(
+            width: _width * 8 / 9,
+            // height: _height * 0.8, //screenWidth  * 8/ 9,
+            margin: EdgeInsets.all(_width / 50),
+            padding: EdgeInsets.all(_width / 50),
+            decoration: BoxDecoration(
+              border: Border.all(width: 1.0, color: Colors.black38),
+              borderRadius: BorderRadius.all(Radius.circular(6.0)),
             ),
-            //日历方框
-            Container(
-              width: _width * 8 / 9,
-              // height: _height * 0.8, //screenWidth  * 8/ 9,
-              margin: EdgeInsets.all(_width / 50),
-              padding: EdgeInsets.all(_width / 50),
-              decoration: BoxDecoration(
-                border: Border.all(width: 1.0, color: Colors.black38),
-                borderRadius: BorderRadius.all(Radius.circular(6.0)),
-              ),
-              //显示日历具体信息
-              child: FittedBox(
-                alignment: Alignment.topCenter,
-                child: Column(children: _table),
-              ),
+            //显示日历具体信息
+            child: FittedBox(
+              alignment: Alignment.topCenter,
+              child: Column(children: _table),
             ),
-          ],
-        ),
+          ),
+          //点击任意日期 显示宗教节日
+          Text(
+            zongjiaostr ?? "",
+            style: TextStyle(color: Colors.red, fontSize: font),
+          )
+        ],
       ),
+      // ),
     );
   }
 }
