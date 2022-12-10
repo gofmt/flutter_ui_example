@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'month_view.dart';
 
 void main() {
-  runApp(MyApp());
+  if (window.physicalSize.isEmpty) {
+    window.onMetricsChanged = () {
+      if (!window.physicalSize.isEmpty) {
+        window.onMetricsChanged = null;
+        runApp(MyApp());
+      }
+    };
+  } else {
+    runApp(MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
