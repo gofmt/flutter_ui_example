@@ -9,6 +9,7 @@ import 'package:mysample/widgets/form.dart';
 import 'package:mysample/widgets/gestureDetector.dart';
 import 'package:mysample/widgets/passwdor.dart';
 import 'package:mysample/widgets/richtext.dart';
+import 'package:mysample/widgets/unique_serial.dart';
 
 import 'widgets/example_args.dart';
 import 'widgets/example_table.dart';
@@ -50,17 +51,22 @@ class FlutterExample extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: Text('password'),
-            subtitle: Text('输入文本'),
+            title: const Text("Unique_serial"),
+            subtitle: const Text('获取移动设备识别码'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const UniqueExample())),
+          ),
+          ListTile(
+            title: const Text('password'),
+            subtitle: const Text('输入文本'),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => const Password()))),
           ),
           ListTile(
-            title: Text('table'),
+            title: const Text('table'),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ExampleGridView())),
           ),
           ListTile(
-            title: Text('画圆12宫'),
-            subtitle: Text(''),
+            title: const Text('画圆12宫'),
+            subtitle: const Text(''),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ExamplePaint()),
@@ -113,7 +119,8 @@ class FlutterExample extends StatelessWidget {
           ListTile(
             title: const Text('CupertinoIndicatorApp'),
             subtitle: const Text('显示圆形“微调器”'),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CupertinoIndicatorApp())),
+            onTap: () =>
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const CupertinoIndicatorApp())),
           ),
           ListTile(
             title: const Text('async'),
