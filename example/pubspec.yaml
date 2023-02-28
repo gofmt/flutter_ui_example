@@ -54,6 +54,9 @@ dependencies:
   network_info_plus: ^3.0.1
   # 格式化输出
   sprintf: ^7.0.0
+  # 
+  markdown_widget: ^2.0.0+1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -13,6 +13,7 @@ import 'package:mysample/widgets/unique_serial.dart';
 
 import 'widgets/example_args.dart';
 import 'widgets/example_table.dart';
+import 'widgets/markdown.dart';
 
 void main() => runApp(const MyApp());
 
@@ -50,6 +51,10 @@ class FlutterExample extends StatelessWidget {
       appBar: AppBar(title: const Text('Flutter Example')),
       body: ListView(
         children: [
+          ListTile(
+            title: const Text("markdown listview"),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PageMartDown())),
+          ),
           ListTile(
             title: const Text("Unique_serial"),
             subtitle: const Text('获取移动设备识别码'),
