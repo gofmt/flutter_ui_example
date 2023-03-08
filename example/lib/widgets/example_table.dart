@@ -12,6 +12,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
   double font = 19.0;
   @override
   Widget build(BuildContext context) {
+    final widthx = MediaQuery.of(context).size.width; //宽度
     return Scaffold(
       appBar: AppBar(
         title: Text('九宫格'),
@@ -27,12 +28,17 @@ class _ExampleGridViewState extends State<ExampleGridView> {
         // },
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         children: [
+          // 上三行 巽 离 坤
           TableRow(
             children: [
               //4 巽
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
                   children: [
                     TableRow(children: [
                       TableCell(
@@ -48,7 +54,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -117,7 +127,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "巽", style: TextStyle(fontSize: font - 6, color: Colors.green), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "巽",
+                                style: TextStyle(fontSize: font - 6, color: Colors.green),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -127,6 +141,10 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
                   children: [
                     TableRow(children: [
                       TableCell(
@@ -142,7 +160,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -211,7 +233,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "离", style: TextStyle(fontSize: font - 6, color: Colors.red), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "离",
+                                style: TextStyle(fontSize: font - 6, color: Colors.red),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -221,6 +247,10 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
                   children: [
                     TableRow(children: [
                       TableCell(
@@ -236,7 +266,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -305,7 +339,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "坤", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "坤",
+                                style: TextStyle(fontSize: font - 6, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -313,18 +351,27 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               ),
             ],
           ),
-          //震
+          //中三行 震 中 兑
           TableRow(
             children: [
+              //震
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  ///设置表内每一列的宽度 0第一列 1第二列
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
+                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                  // border: TableBorder.all(color: Colors.red, width: 2),//边框
                   children: [
                     TableRow(children: [
                       TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.top,
                         child: RichText(
                           text: TextSpan(
-                            text: "八神",
+                            text: "八神3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -334,14 +381,18 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行3",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
                       TableCell(
                         child: RichText(
                           text: TextSpan(
-                            text: "九星",
+                            text: "九星3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -353,7 +404,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       TableCell(
                         child: RichText(
                           text: TextSpan(
-                            text: "天盘干",
+                            text: "天盘干3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -367,7 +418,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       TableCell(
                         child: RichText(
                           text: TextSpan(
-                            text: "八门",
+                            text: "八门3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -379,7 +430,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       TableCell(
                         child: RichText(
                           text: TextSpan(
-                            text: "地盘干",
+                            text: "地盘干3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -393,7 +444,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       TableCell(
                         child: RichText(
                           text: TextSpan(
-                            text: "暗干",
+                            text: "暗干3",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -403,7 +454,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "震", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 23, 129, 60)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "震3",
+                                style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 23, 129, 60)),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -413,6 +468,10 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
                   children: [
                     TableRow(children: [
                       TableCell(
@@ -428,7 +487,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -497,7 +560,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "中", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 200, 26, 219)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "中",
+                                style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 200, 26, 219)),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -507,6 +574,10 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Table(
+                  columnWidths: <int, TableColumnWidth>{
+                    0: FixedColumnWidth(widthx * 0.1),
+                    1: FixedColumnWidth(widthx * 0.2)
+                  },
                   children: [
                     TableRow(children: [
                       TableCell(
@@ -522,7 +593,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -591,7 +666,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "兑", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 221, 7)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "兑",
+                                style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 221, 7)),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -599,6 +678,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               ),
             ],
           ),
+          //下三行 艮 坎 乾
           TableRow(
             children: [
               //艮
@@ -620,7 +700,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -689,7 +773,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "艮", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 206, 6)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "艮",
+                                style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 232, 206, 6)),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -714,7 +802,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -783,7 +875,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "坎", style: TextStyle(fontSize: font - 6, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "坎",
+                                style: TextStyle(fontSize: font - 6, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
@@ -808,7 +904,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "五行", style: TextStyle(fontSize: font, color: Colors.black), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "五行",
+                                style: TextStyle(fontSize: font, color: Colors.black),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       )
                     ]),
                     TableRow(children: [
@@ -877,7 +977,11 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                         ),
                       ),
                       TableCell(
-                        child: RichText(text: TextSpan(text: "乾", style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 7, 50, 225)), recognizer: TapGestureRecognizer()..onTap = () {})),
+                        child: RichText(
+                            text: TextSpan(
+                                text: "乾",
+                                style: TextStyle(fontSize: font - 6, color: Color.fromARGB(255, 7, 50, 225)),
+                                recognizer: TapGestureRecognizer()..onTap = () {})),
                       ),
                     ]),
                   ],
