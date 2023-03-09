@@ -20,20 +20,20 @@ class _ExampleGridViewState extends State<ExampleGridView> {
       ),
       body: Table(
         border: TableBorder.all(),
-        //确定此表各列的水平范围。
-        // columnWidths: const <int, TableColumnWidth>{
-        //   0: IntrinsicColumnWidth(),
-        //   1: FlexColumnWidth(),
-        //   2: IntrinsicColumnWidth(), //FixedColumnWidth(64),
-        // },
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        // defaultVerticalAlignment: TableCellVerticalAlignment.top,
+        //
+        columnWidths: <int, TableColumnWidth>{
+          0: FixedColumnWidth(widthx * 0.333),
+          1: FixedColumnWidth(widthx * 0.333),
+          2: FixedColumnWidth(widthx * 0.333)
+        },
         children: [
           // 上三行 巽 离 坤
           TableRow(
             children: [
               //4 巽
               TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
+                verticalAlignment: TableCellVerticalAlignment.top,
                 child: Table(
                   columnWidths: <int, TableColumnWidth>{
                     0: FixedColumnWidth(widthx * 0.1),
@@ -43,8 +43,9 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false, //禁止文字自动换行
                           text: TextSpan(
-                            text: "八神",
+                            text: "八神4",
                             style: TextStyle(fontSize: font, color: Colors.black),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -55,6 +56,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "五行",
                                 style: TextStyle(fontSize: font, color: Colors.black),
@@ -64,6 +66,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "九星",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -76,6 +79,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "天盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -90,6 +94,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "八门",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -102,6 +107,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "地盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -116,6 +122,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "暗干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -128,6 +135,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "巽",
                                 style: TextStyle(fontSize: font - 6, color: Colors.green),
@@ -139,7 +147,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               ),
               //离
               TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
+                verticalAlignment: TableCellVerticalAlignment.top,
                 child: Table(
                   columnWidths: <int, TableColumnWidth>{
                     0: FixedColumnWidth(widthx * 0.1),
@@ -149,6 +157,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "八神",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -161,6 +170,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "五行",
                                 style: TextStyle(fontSize: font, color: Colors.black),
@@ -170,6 +180,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "九星",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -182,6 +193,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "天盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -196,6 +208,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "八门",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -208,6 +221,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "地盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -222,6 +236,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "暗干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -234,6 +249,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "离",
                                 style: TextStyle(fontSize: font - 6, color: Colors.red),
@@ -245,7 +261,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
               ),
               // 坤
               TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
+                verticalAlignment: TableCellVerticalAlignment.top,
                 child: Table(
                   columnWidths: <int, TableColumnWidth>{
                     0: FixedColumnWidth(widthx * 0.1),
@@ -255,6 +271,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "八神",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -267,6 +284,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "五行",
                                 style: TextStyle(fontSize: font, color: Colors.black),
@@ -276,6 +294,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "九星",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -288,6 +307,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "天盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -302,6 +322,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "八门",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -314,6 +335,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "地盘干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -328,6 +350,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                     TableRow(children: [
                       TableCell(
                         child: RichText(
+                          softWrap: false,
                           text: TextSpan(
                             text: "暗干",
                             style: TextStyle(fontSize: font, color: Colors.black),
@@ -340,6 +363,7 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                       ),
                       TableCell(
                         child: RichText(
+                            softWrap: false,
                             text: TextSpan(
                                 text: "坤",
                                 style: TextStyle(fontSize: font - 6, color: Colors.black),
@@ -994,321 +1018,3 @@ class _ExampleGridViewState extends State<ExampleGridView> {
     );
   }
 }
-
-// class _ExampleGridViewState extends State<ExampleGridView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Table(
-//       border: TableBorder.all(),
-//       //确定此表各列的水平范围。
-//       // columnWidths: const <int, TableColumnWidth>{
-//       //   0: IntrinsicColumnWidth(),
-//       //   1: FlexColumnWidth(),
-//       //   2: IntrinsicColumnWidth(), //FixedColumnWidth(64),
-//       // },
-//       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-//       children: [
-//         TableRow(
-//           children: [
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//         TableRow(
-//           children: [
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//         TableRow(
-//           children: [
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//             TableCell(
-//               verticalAlignment: TableCellVerticalAlignment.middle,
-//               child: Table(
-//                 children: [
-//                   TableRow(children: [TableCell(child: Text('八神', style: TextStyle(fontSize: 13))), TableCell(child: Text('五行', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('九星', style: TextStyle(fontSize: 13))), TableCell(child: Text('天盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('八门', style: TextStyle(fontSize: 13))), TableCell(child: Text('地盘干', style: TextStyle(fontSize: 13)))]),
-//                   TableRow(children: [TableCell(child: Text('暗干', style: TextStyle(fontSize: 13))), TableCell(child: Text('number', style: TextStyle(fontSize: 13)))]),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-// class _ExampleGridViewState extends State<ExampleGridView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: "table",
-//       home: Scaffold(
-//         appBar: AppBar(),
-//         // body: Column(
-//         //   // textBaseline: TextBaseline.ideographic,
-//         //   children: [
-//         //     Table(
-//         //       border: TableBorder.all(style: BorderStyle.solid, width: 0.3),
-//         //       children: [
-//         //         TableRow(children: [
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowA1"), Text("rowA2"), Text("rowA3"),
-//         //           TableCell(child: Text('cell1')),
-//         //           TableCell(child: Text('cell2')),
-//         //           TableCell(child: Text('cell3')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           // Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //       ],
-//         //     ),
-//         //     Divider(color: Colors.red),
-//         //     Table(
-//         //       //  border: TableBorder.all(),
-//         //       children: [
-//         //         TableRow(children: [
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowA1"), Text("rowA2"), Text("rowA3"),
-//         //           TableCell(child: Text('cell1')),
-//         //           TableCell(child: Text('cell2')),
-//         //           TableCell(child: Text('cell3')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           // Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //       ],
-//         //     ),
-//         //     // Table(
-//         //     //   //  border: TableBorder.all(),
-//         //     //   children: const [
-//         //     //     TableRow(children: [Text("row1"), Text("row2"), Text("row3")]),
-//         //     //     TableRow(children: [Text("rowA1"), Text("rowA2"), Text("rowA3")]),
-//         //     //     TableRow(children: [Text("rowC1"), Text("rowC2"), Text("rowC3")]),
-//         //     //     TableRow(children: [Text("rowC1"), Text("rowC2"), Text("rowC3")]),
-//         //     //   ],
-//         //     // ),
-//         //     Divider(color: Colors.red),
-//         //     Table(
-//         //       //  border: TableBorder.all(),
-//         //       children: [
-//         //         TableRow(children: [
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowA1"), Text("rowA2"), Text("rowA3"),
-//         //           TableCell(child: Text('cell1')),
-//         //           TableCell(child: Text('cell2')),
-//         //           TableCell(child: Text('cell3')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           // Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //         TableRow(children: [
-//         //           //Text("rowC1"), Text("rowC2"), Text("rowC3")
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //           TableCell(child: Text('cell')),
-//         //         ]),
-//         //       ],
-//         //     ),
-//         //     // Table(
-//         //     //   // border: TableBorder.all(),
-//         //     //   children: const [
-//         //     //     TableRow(children: [Text("row1"), Text("row2"), Text("row3")]),
-//         //     //     TableRow(children: [Text("rowA1"), Text("rowA2"), Text("rowA3")]),
-//         //     //     TableRow(children: [Text("rowC1"), Text("rowC2"), Text("rowC3")]),
-//         //     //     TableRow(children: [Text("rowC1"), Text("rowC2"), Text("rowC3")]),
-//         //     //   ],
-//         //     // ),
-//         //   ],
-//         // ),
-//         // body: Container(
-//         //   width: 300,
-//         //   height: 300,
-//         //   decoration: BoxDecoration(
-//         //     // color: Colors.lightBlue,
-//         //     border: Border.all(width: 1, color: Colors.red),
-//         //     borderRadius: BorderRadius.circular(8.0),
-//         //   ),
-
-//         // ),
-
-//         //  body: Center(
-//         //         child: Column(children: <Widget>[
-//         //       Container(
-//         //         margin: EdgeInsets.all(20),
-//         //         child: Table(
-//         //           defaultColumnWidth: FixedColumnWidth(120.0),
-//         //           border: TableBorder.all(color: Colors.black, style: BorderStyle.solid, width: 2),
-//         //           children: [
-//         //             TableRow(children: [
-//         //               Column(children: [Text('Website', style: TextStyle(fontSize: 20.0))]),
-//         //               Column(children: [Text('Tutorial', style: TextStyle(fontSize: 20.0))]),
-//         //               Column(children: [Text('Review', style: TextStyle(fontSize: 20.0))]),
-//         //             ]),
-//         //             TableRow(children: [
-//         //               Column(children: [Text('Learnfk')]),
-//         //               Column(children: [Text('Flutter')]),
-//         //               Column(children: [Text('5*')]),
-//         //             ]),
-//         //             TableRow(children: [
-//         //               Column(children: [Text('Learnfk')]),
-//         //               Column(children: [Text('MySQL')]),
-//         //               Column(children: [Text('5*')]),
-//         //             ]),
-//         //             TableRow(children: [
-//         //               Column(children: [Text('Learnfk')]),
-//         //               Column(children: [Text('ReactJS')]),
-//         //               Column(children: [Text('5*')]),
-//         //             ]),
-//         //           ],
-//         //         ),
-//         //       ),
-//         //     ])),
-//         // body: GridView(
-//         //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//         //     crossAxisCount: 3,
-//         //   ),
-//         //   children: [
-
-//         //     Column(
-//         //       children: [
-//         //         Text("a"),
-//         //         Text("A"),
-//         //         Text("A"),
-//         //       ],
-//         //     ),
-//         //     Column(
-//         //       children: [
-//         //         Text("B"),
-//         //         Text("B"),
-//         //         Text("B"),
-//         //       ],
-//         //     ),
-//         //     Column(
-//         //       children: [Text("C"), Text("C"), Text("C")],
-//         //     )
-//         //   ],
-//         // ),
-//       ),
-//     );
-//   }
-// }
