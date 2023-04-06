@@ -7,6 +7,7 @@ import 'package:mysample/widgets/add_item_to_listview.dart';
 import 'package:mysample/widgets/custom_painter.dart';
 import 'package:mysample/widgets/form.dart';
 import 'package:mysample/widgets/gestureDetector.dart';
+import 'package:mysample/widgets/pai_lie.dart';
 import 'package:mysample/widgets/passwdor.dart';
 import 'package:mysample/widgets/richtext.dart';
 import 'package:mysample/widgets/unique_serial.dart';
@@ -51,6 +52,10 @@ class FlutterExample extends StatelessWidget {
       appBar: AppBar(title: const Text('Flutter Example')),
       body: ListView(
         children: [
+          ListTile(
+            title: const Text('数字排列'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PagePaiLie())),
+          ),
           ListTile(
             title: const Text("markdown listview"),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PageMartDown())),
