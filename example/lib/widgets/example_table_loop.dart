@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TableLoop extends StatefulWidget {
-  const TableLoop({super.key});
+class ExampleTableLoop extends StatefulWidget {
+  const ExampleTableLoop({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -9,7 +9,7 @@ class TableLoop extends StatefulWidget {
   }
 }
 
-class _Tabledemo extends State<TableLoop> {
+class _Tabledemo extends State<ExampleTableLoop> {
   List demoList = [
     {
       "A": "list1",

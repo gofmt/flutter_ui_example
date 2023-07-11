@@ -5,7 +5,6 @@ import 'package:mysample/paint/example_paint.dart';
 import 'package:mysample/widgets/CupertinoActivityIndicator.dart';
 import 'package:mysample/widgets/add_item_to_listview.dart';
 import 'package:mysample/widgets/custom_painter.dart';
-import 'package:mysample/widgets/example_taple_loop.dart';
 import 'package:mysample/widgets/form.dart';
 import 'package:mysample/widgets/gestureDetector.dart';
 import 'package:mysample/widgets/pai_lie.dart';
@@ -15,6 +14,7 @@ import 'package:mysample/widgets/unique_serial.dart';
 
 import 'widgets/example_args.dart';
 import 'widgets/example_table.dart';
+import 'widgets/example_table_loop.dart';
 import 'widgets/markdown.dart';
 
 void main() => runApp(const MyApp());
@@ -55,7 +55,7 @@ class FlutterExample extends StatelessWidget {
         children: [
           ListTile(
             title: const Text('table_loop'),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TableLoop())),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ExampleTableLoop())),
           ),
           ListTile(
             title: const Text('数字排列'),
