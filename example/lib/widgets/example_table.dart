@@ -37,7 +37,8 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                 child: Table(
                   columnWidths: <int, TableColumnWidth>{
                     0: FixedColumnWidth(widthx * 0.1),
-                    1: FixedColumnWidth(widthx * 0.2)
+                    1: FixedColumnWidth(widthx * 0.1),
+                    2: FixedColumnWidth(widthx * 0.1)
                   },
                   children: [
                     TableRow(children: [
@@ -54,6 +55,12 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                           ),
                         ),
                       ),
+                      //insert
+                      TableCell(
+                          child: RichText(
+                        softWrap: false,
+                        text: TextSpan(text: "", style: TextStyle(fontSize: font - 3, color: Colors.red)),
+                      )),
                       TableCell(
                         child: RichText(
                             softWrap: false,
@@ -77,6 +84,12 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                           ),
                         ),
                       ),
+                      //insert
+                      TableCell(
+                          child: RichText(
+                        softWrap: false,
+                        text: TextSpan(text: "击刑显示", style: TextStyle(fontSize: font - 3, color: Colors.red)),
+                      )),
                       TableCell(
                         child: RichText(
                           softWrap: false,
@@ -105,6 +118,12 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                           ),
                         ),
                       ),
+                      //insert
+                      TableCell(
+                          child: RichText(
+                        softWrap: false,
+                        text: TextSpan(text: "击刑显示", style: TextStyle(fontSize: font - 3, color: Colors.red)),
+                      )),
                       TableCell(
                         child: RichText(
                           softWrap: false,
@@ -133,6 +152,13 @@ class _ExampleGridViewState extends State<ExampleGridView> {
                           ),
                         ),
                       ),
+                      //insert
+                      TableCell(
+                          child: RichText(
+                        softWrap: false,
+                        text: TextSpan(text: "应期干", style: TextStyle(fontSize: font - 3, color: Colors.red)),
+                      )),
+
                       TableCell(
                         child: RichText(
                             softWrap: false,
