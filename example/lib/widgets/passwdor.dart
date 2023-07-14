@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mysample/widgets/example_table.dart';
+
+import 'example_table.dart';
 
 class Password extends StatefulWidget {
   const Password({super.key});
@@ -10,13 +11,13 @@ class Password extends StatefulWidget {
 
 class _PasswordState extends State<Password> {
   final mycontorller = TextEditingController();
-  final date = DateTime.now().toLocal();
   @override
   void dispose() {
     mycontorller.dispose();
     super.dispose();
   }
 
+  late bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,15 +28,28 @@ class _PasswordState extends State<Password> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: TextField(
+          obscureText: _isObscure,
           controller: mycontorller,
+          decoration: InputDecoration(
+              labelText: "Password",
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _isObscure = !_isObscure;
+                    });
+                  },
+                  icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off))),
+          onChanged: (value) {
+            print("input value is $value");
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         var input = mycontorller.text;
-        // print("mycontorller.text: $input");
-        var now = date.toString().substring(12, 16); //date.hour.toString() + date.minute.toString();
-        // print("$date now $now");
-        input == now ? Navigator.push(context, MaterialPageRoute(builder: ((context) => const ExampleGridView()))) : "";
+        setState(() {
+          print("input $input");
+        });
+        Navigator.push(context, MaterialPageRoute(builder: ((context) => const ExampleGridView())));
       }),
     );
   }
